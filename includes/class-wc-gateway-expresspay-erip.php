@@ -53,8 +53,8 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 			'products',
 		);
 
-		$this->method_title       = __( 'Express Payments: ERIP', 'woocommerce-gateway-expresspay-erip' );
-		$this->method_description = __( 'Acceptance of payments in the ERIP system, service «Express Payments».', 'woocommerce-gateway-expresspay-erip' );
+		$this->method_title       = __( 'Express Payments: ERIP', 'wordpress_erip_expresspay' );
+		$this->method_description = __( 'Acceptance of payments in the ERIP system, service «Express Payments».', 'wordpress_erip_expresspay' );
 
 		$this->title = $this->get_option('payment_method_title');
 		$this->description = $this->get_option('payment_method_description');
@@ -101,14 +101,14 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 	public function admin_options()
 	{
 		?>
-		<h3><?php echo __('Express Payments: ERIP', 'woocommerce-gateway-expresspay-erip'); ?></h3>
+		<h3><?php echo __('Express Payments: ERIP', 'wordpress_erip_expresspay'); ?></h3>
 		<div style="display: inline-block;">
 			<a target="_blank" href="https://express-pay.by"><img src="<?php echo WC_ExpressPay_Erip_Payments::plugin_url(); ?>/assets/images/erip_expresspay_big.png" alt="exspress-pay.by" title="express-pay.by"></a>
 		</div>
 		<div style="margin-left: 6px; display: inline-block;">
 			<?php echo __('Express Payments: ERIP - is a plugin for integration with the «Express Payments» (express-pay.by) via API. 
 			<br/>The plugin allows you to issue an invoice for a card payment, receive and process a payment notification. 
-			<br/>The plugin description is available at:', 'woocommerce-gateway-expresspay-erip'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
+			<br/>The plugin description is available at:', 'wordpress_erip_expresspay'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
 		</div>
 
 		<table class="form-table">
@@ -117,8 +117,8 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 			?>
 		</table>
 		<div class="copyright" style="text-align: center;">
-			<?php echo __('© All rights reserved | LLC «TriInkom»', 'woocommerce-gateway-expresspay-erip'); ?> 2013-<?php echo date("Y"); ?><br />
-			<?php echo __('Version', 'woocommerce-gateway-expresspay-erip') . " " . EXPRESSPAY_ERIP_VERSION ?>
+			<?php echo __('© All rights reserved | LLC «TriInkom»', 'wordpress_erip_expresspay'); ?> 2013-<?php echo date("Y"); ?><br />
+			<?php echo __('Version', 'wordpress_erip_expresspay') . " " . EXPRESSPAY_ERIP_VERSION ?>
 		</div>
 		<?php
 	}
@@ -130,147 +130,147 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 		
 		$this->form_fields = array(
 			'enabled' => array(
-				'title'   => __('Enable/Disable', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Enable/Disable', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox',
 				'default' => 'no'
 			),
 			'hide_for_non_admin_users' => array(
 				'type'    => 'checkbox',
-				'label'   => __( 'Hide at checkout for non-admin users', 'woocommerce-gateway-expresspay-erip' ),
+				'label'   => __( 'Hide at checkout for non-admin users', 'wordpress_erip_expresspay' ),
 				'default' => 'no',
 			),
 			'token' => array(
-				'title'   => __('Token', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Token', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
-				'description' => __('Generated in the panel express-pay.by', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('Generated in the panel express-pay.by', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'service_id' => array(
-				'title'   => __('Service number', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Service number', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
-				'description' => __('Service number in express-pay.by', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('Service number in express-pay.by', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'secret_key' => array(
-				'title'   => __('Secret word for signing invoices', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Secret word for signing invoices', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
-				'description' => __('A secret word that is known only to the server and the client. Used to generate a digital signature. Set in the panel express-pay.by', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('A secret word that is known only to the server and the client. Used to generate a digital signature. Set in the panel express-pay.by', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'handler_url' => array(
-				'title'   => __('Address for notifications', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Address for notifications', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
 				'css' => 'display: none;',
 				'description' => get_site_url() . '/?wc-api=expresspay_erip&action=notify'
 			),
 			'is_use_signature_notify' => array(
-				'title'   => __('Use digitally sign notifications', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Use digitally sign notifications', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox',
-				'description' => __('Use digitally sign notifications', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('Use digitally sign notifications', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'secret_key_notify' => array(
-				'title'   => __('Secret word for signing notifications', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Secret word for signing notifications', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
-				'description' => __('A secret word that is known only to the server and the client. Used to generate a digital signature. Set in the panel express-pay.by', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('A secret word that is known only to the server and the client. Used to generate a digital signature. Set in the panel express-pay.by', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'test_mode' => array(
-				'title'   => __('Use test mode', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Use test mode', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox'
 			),
 			'url_api' => array(
-				'title'   => __('API address', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('API address', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
 				'default' => 'https://api.express-pay.by'
 			),
 			'url_sandbox_api' => array(
-				'title'   => __('Test API address', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Test API address', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
 				'default' => 'https://sandbox-api.express-pay.by'
 			),
 			'show_qr_code' => array(
-				'title'   => __('Show QR code for payment', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Show QR code for payment', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox',
-				'description' => __('Show QR code for payment', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('Show QR code for payment', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'name_editable' => array(
-				'title'   => __('It is allowed to change the name of the payer', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('It is allowed to change the name of the payer', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox',
-				'description' => __('It is allowed to change the name of the payer when paying the invoice', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('It is allowed to change the name of the payer when paying the invoice', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'address_editable' => array(
-				'title'   => __("Allowed to change the payer's address", 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __("Allowed to change the payer's address", 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox',
-				'description' => __("It is allowed to change the payer's address when paying an invoice", 'woocommerce-gateway-expresspay-erip'),
+				'description' => __("It is allowed to change the payer's address when paying an invoice", 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'amount_editable' => array(
-				'title'   => __('Allowed to change the amount of payment', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Allowed to change the amount of payment', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox',
-				'description' => __('It is allowed to change the payment amount when paying an invoice', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('It is allowed to change the payment amount when paying an invoice', 'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'send_client_email' => array(
-				'title'   => __('Send email notification to client', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Send email notification to client', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox'
 			),
 			'test_mode' => array(
-				'title'   => __('Use test mode', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Use test mode', 'wordpress_erip_expresspay'),
 				'type'    => 'checkbox'
 			),
 			'url_api' => array(
-				'title'   => __('API address', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('API address', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
 				'default' => 'https://api.express-pay.by'
 			),
 			'url_sandbox_api' => array(
-				'title'   => __('Test API address', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Test API address', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
 				'default' => 'https://sandbox-api.express-pay.by'
 			),
 			'path_to_erip' => array(
-				'title'   => __('The path to ERIP', 'woocommerce-gateway-expresspay-erip'),
-				'description' => __('The path along the ERIP branch which is recorded in the personal account express-pay.by', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('The path to ERIP', 'wordpress_erip_expresspay'),
+				'description' => __('The path along the ERIP branch which is recorded in the personal account express-pay.by', 'wordpress_erip_expresspay'),
 				'type'    => 'textarea',
-				'default' => __('Online stores \ Services -> "The first letter of the domain name of the online store" -> "The domain name of the online store"', 'woocommerce-gateway-expresspay-erip'),
+				'default' => __('Online stores \ Services -> "The first letter of the domain name of the online store" -> "The domain name of the online store"', 'wordpress_erip_expresspay'),
 				'css'	  => 'min-height: 160px;'
 			),
 			'status_after_placing' => array(
-				'title'       => __('Status after invoicing', 'woocommerce-gateway-expresspay-erip'),
+				'title'       => __('Status after invoicing', 'wordpress_erip_expresspay'),
 				'type'        => 'select',
-				'description' => __('The status that the order will have after invoicing', 'woocommerce-gateway-expresspay-erip'),
+				'description' => __('The status that the order will have after invoicing', 'wordpress_erip_expresspay'),
 				'options'     => wc_get_order_statuses(),
 				'desc_tip'    => true,
 			),
 			'status_after_payment' => array(
-				'title'       => __( 'Status after payment', 'woocommerce-gateway-expresspay-erip' ),
+				'title'       => __( 'Status after payment', 'wordpress_erip_expresspay' ),
 				'type'        => 'select',
-				'description' => __( 'The status that the order will have after payment', 'woocommerce-gateway-expresspay-erip' ),
+				'description' => __( 'The status that the order will have after payment', 'wordpress_erip_expresspay' ),
 				'options'     => wc_get_order_statuses(),
 				'desc_tip'    => true,
 			),
 			'status_after_cancellation'    => array(
-				'title'       => __( 'Status after cancellation', 'woocommerce-gateway-expresspay-erip' ),
+				'title'       => __( 'Status after cancellation', 'wordpress_erip_expresspay' ),
 				'type'        => 'select',
-				'description' => __( 'The status that the order will have after cancellation', 'woocommerce-gateway-expresspay-erip' ),
+				'description' => __( 'The status that the order will have after cancellation', 'wordpress_erip_expresspay' ),
 				'options'     => wc_get_order_statuses(),
 				'desc_tip'    => true,
 			),
 			'payment_method_title' => array(
-				'title'   => __('Payment method name', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Payment method name', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
-				'description' => __('The name that will be displayed in the cart when choosing a payment method', 'woocommerce-gateway-expresspay-erip'),
-				'default' 	=> __("Express Payments: ERIP",'woocommerce-gateway-expresspay-erip'),
+				'description' => __('The name that will be displayed in the cart when choosing a payment method', 'wordpress_erip_expresspay'),
+				'default' 	=> __("Express Payments: ERIP",'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 			'payment_method_description' => array(
-				'title'   => __('Description of the payment method', 'woocommerce-gateway-expresspay-erip'),
+				'title'   => __('Description of the payment method', 'wordpress_erip_expresspay'),
 				'type'    => 'text',
-				'description' => __('Description that will be displayed in the payment method settings', 'woocommerce-gateway-expresspay-erip'),
-				'default' 	=> __("Payment by erip service Express Payments",'woocommerce-gateway-expresspay-erip'),
+				'description' => __('Description that will be displayed in the payment method settings', 'wordpress_erip_expresspay'),
+				'default' 	=> __("Payment by erip service Express Payments",'wordpress_erip_expresspay'),
 				'desc_tip'    => true
 			),
 		);
@@ -376,7 +376,7 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 
 		$woocommerce->cart->empty_cart();
 
-		$order->update_status($this->status_after_placing, __('Invoice successfully issued and awaiting payment', 'woocommerce-gateway-expresspay-erip'));
+		$order->update_status($this->status_after_placing, __('Invoice successfully issued and awaiting payment', 'wordpress_erip_expresspay'));
 
 		$message_success = __('<h3>Account added to the ERIP system for payment</h3>
 		<h4>Your order number: ##order_id##</h4>
@@ -385,7 +385,7 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 		<br/> 1. To do this, in the list of ERIP services go to the section:<br/><b>##erip_path##</b>
 		<br/> 2. Next, enter the order number <b>##order_id##</b> and click "Continue"
 		<br/> 3. Check if the information is correct. 
-		<br/> 4. Make a payment.</td> ', 'woocommerce-gateway-expresspay-erip');
+		<br/> 4. Make a payment.</td> ', 'wordpress_erip_expresspay');
 
 		$message_success = str_replace("##order_id##", $order->get_order_number(), $message_success);
 		$message_success = str_replace("##erip_path##", $this->path_to_erip, $message_success);
@@ -422,12 +422,12 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 				<br/>##OR_CODE##<br/><p><b>##OR_CODE_DESCRIPTION##</b></p></td></tr></tbody></table>";
 
 				$message_success = str_replace('##OR_CODE##', '<img src="data:image/jpeg;base64,' . $qr_code . '"  width="200" height="200"/>',  $message_success);
-				$message_success = str_replace('##OR_CODE_DESCRIPTION##', __('Scan the QR code to pay', 'woocommerce-gateway-expresspay-erip'),  $message_success);
+				$message_success = str_replace('##OR_CODE_DESCRIPTION##', __('Scan the QR code to pay', 'wordpress_erip_expresspay'),  $message_success);
 				echo $message_success;
 			}
 		} else echo $message_success;
 
-		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . get_permalink(wc_get_page_id("shop")) . '">' . __('Proceed', 'woocommerce-gateway-expresspay-erip') . '</a></p>';
+		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . get_permalink(wc_get_page_id("shop")) . '">' . __('Proceed', 'wordpress_erip_expresspay') . '</a></p>';
 
 		$signature_success = $signature_cancel = "";
 
@@ -438,9 +438,9 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 
 		if ($this->test_mode) : ?>
 			<div class="test_mode">
-				<?php echo __('Test mode:', 'woocommerce-gateway-expresspay-erip'); ?> <br />
-				<input type="button" style="margin: 6px 0;" class="button" id="send_notify_success" value="<?php echo __('Send notification of successful payment', 'woocommerce-gateway-expresspay-erip'); ?>" />
-				<input type="button" class="button" style="margin: 6px 0;" id="send_notify_cancel" class="btn btn-primary" value="<?php echo __('Send payment cancellation notification', 'woocommerce-gateway-expresspay-erip'); ?>" />
+				<?php echo __('Test mode:', 'wordpress_erip_expresspay'); ?> <br />
+				<input type="button" style="margin: 6px 0;" class="button" id="send_notify_success" value="<?php echo __('Send notification of successful payment', 'wordpress_erip_expresspay'); ?>" />
+				<input type="button" class="button" style="margin: 6px 0;" id="send_notify_cancel" class="btn btn-primary" value="<?php echo __('Send payment cancellation notification', 'wordpress_erip_expresspay'); ?>" />
 
 				<script type="text/javascript">
 					jQuery(document).ready(function() {
@@ -481,10 +481,10 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 
 		$order->update_status($this->status_after_cancellation, $errors[0]);
 
-		echo '<h2>' . __('Error billing in the ERIP system', 'woocommerce-gateway-expresspay-erip') . '</h2>';
-		echo __("An unexpected error occurred while executing the request. Please try again later or contact the store's technical support", 'woocommerce-gateway-expresspay-erip');
+		echo '<h2>' . __('Error billing in the ERIP system', 'wordpress_erip_expresspay') . '</h2>';
+		echo __("An unexpected error occurred while executing the request. Please try again later or contact the store's technical support", 'wordpress_erip_expresspay');
 
-		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . wc_get_checkout_url() . '">' . __('Try again', 'woocommerce-gateway-expresspay-erip') . '</a></p>';
+		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . wc_get_checkout_url() . '">' . __('Try again', 'wordpress_erip_expresspay') . '</a></p>';
 
 		$this->log_info('fail', 'End render fail page; ORDER ID - ' . $order->get_order_number());
 
@@ -536,29 +536,29 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 		if (isset($data->CmdType)) {
 			switch ($data->CmdType) {
 				case '1':
-					$order->update_status($this->status_after_payment, __('The bill is paid', 'woocommerce-gateway-expresspay-erip'));
+					$order->update_status($this->status_after_payment, __('The bill is paid', 'wordpress_erip_expresspay'));
 					$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен; RESPONSE - ' . $dataJSON);
 					break;
 				case '2':
-					$order->update_status($this->status_after_cancellation, __('Payment canceled', 'woocommerce-gateway-expresspay-erip'));
+					$order->update_status($this->status_after_cancellation, __('Payment canceled', 'wordpress_erip_expresspay'));
 					$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Платеж отменён; RESPONSE - ' . $dataJSON);
 
 					break;
 				case '3':
 					if ($data->Status == '1') {
-						$order->update_status($this->status_after_placing, __('Invoice awaiting payment', 'woocommerce-gateway-expresspay-erip'));
+						$order->update_status($this->status_after_placing, __('Invoice awaiting payment', 'wordpress_erip_expresspay'));
 						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет ожидает оплаты; RESPONSE - ' . $dataJSON);
 					} elseif ($data->Status == '2') {
-						$order->update_status($this->status_after_cancellation, __('Invoice expired', 'woocommerce-gateway-expresspay-erip'));
+						$order->update_status($this->status_after_cancellation, __('Invoice expired', 'wordpress_erip_expresspay'));
 						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет просрочен; RESPONSE - ' . $dataJSON);
 					} elseif ($data->Status == '3') {
-						$order->update_status($this->status_after_payment, __('The bill is paid', 'woocommerce-gateway-expresspay-erip'));
+						$order->update_status($this->status_after_payment, __('The bill is paid', 'wordpress_erip_expresspay'));
 						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен; RESPONSE - ' . $dataJSON);
 					} elseif ($data->Status == '5') {
-						$order->update_status($this->status_after_cancellation, __('Invoice canceled', 'woocommerce-gateway-expresspay-erip'));
+						$order->update_status($this->status_after_cancellation, __('Invoice canceled', 'wordpress_erip_expresspay'));
 						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет отменен; RESPONSE - ' . $dataJSON);
 					} elseif ($data->Status == '6') {
-						$order->update_status($this->status_after_payment, __('Invoice paid by card', 'woocommerce-gateway-expresspay-erip'));
+						$order->update_status($this->status_after_payment, __('Invoice paid by card', 'wordpress_erip_expresspay'));
 						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен картой; RESPONSE - ' . $dataJSON);
 					}
 					break;

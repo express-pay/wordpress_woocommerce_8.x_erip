@@ -4,20 +4,13 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Express Payments: Erip Gateway
- * @since    1.0.0
+ * @since    1.1.2
  */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-/**
- * Expresspay_Erip Gateway.
- *
- * @class    WC_Gateway_ExpressPay_Erip
- * @version  1.0.7
- */
 class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 
 	/**
@@ -534,10 +527,10 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 
 		if (isset($data->CmdType)) {
 			switch ($data->CmdType) {
-				case '1':
-					$order->update_status($this->status_after_payment, __('The bill is paid', 'wordpress_erip_expresspay'));
-					$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен; RESPONSE - ' . $dataJSON);
-					break;
+				//case '1':
+				//	$order->update_status($this->status_after_payment, __('The bill is paid', 'wordpress_erip_expresspay'));
+				//	$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен; RESPONSE - ' . $dataJSON);
+				//	break;
 				case '2':
 					$order->update_status($this->status_after_cancellation, __('Payment canceled', 'wordpress_erip_expresspay'));
 					$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Платеж отменён; RESPONSE - ' . $dataJSON);
@@ -561,9 +554,6 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен картой; RESPONSE - ' . $dataJSON);
 					}
 					break;
-				default:
-					$this->notify_fail($dataJSON);
-					die();
 			}
 
 			header("HTTP/1.0 200 OK");

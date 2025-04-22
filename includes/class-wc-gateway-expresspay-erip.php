@@ -4,7 +4,7 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Express Payments: Erip Gateway
- * @since    1.1.2
+ * @since    1.1.3
  */
 
 // Exit if accessed directly.
@@ -91,23 +91,19 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 		add_action( 'woocommerce_api_' . $this->id, array($this, 'check_ipn_response') );
 	}
 
-	public function admin_options()
-	{
+	public function admin_options()	{
 		?>
 		<h3><?php _e("Express Payments: ERIP", 'wordpress_erip_expresspay'); ?></h3>
 		<div style="display: inline-block;">
 			<a target="_blank" href="https://express-pay.by"><img src="<?php echo WC_ExpressPay_Erip_Payments::plugin_url(); ?>/assets/images/erip_expresspay_big.png" alt="exspress-pay.by" title="express-pay.by"></a>
 		</div>
 		<div style="margin-left: 6px; display: inline-block;">
-			<?php _e("Express Payments: ERIP - is a plugin for integration with the «Express Payments» (express-pay.by) via API. ").
-			_e("<br/>The plugin allows you to issue an invoice for a card payment, receive and process a payment notification. ").
-			_e("<br/>The plugin description is available at:", 'wordpress_erip_expresspay'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
+			<?php _e("Express Payments: ERIP - is a plugin for integration with the «Express Payments» (express-pay.by) via API. ", 'wordpress_erip_expresspay').
+			_e("<br/>The plugin allows you to issue an invoice for a card payment, receive and process a payment notification. ", 'wordpress_erip_expresspay').
+			_e("<br/>The plugin description is available at: ", 'wordpress_erip_expresspay'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
 		</div>
-
 		<table class="form-table">
-			<?php
-			$this->generate_settings_html();
-			?>
+			<?php $this->generate_settings_html(); ?>
 		</table>
 		<div class="copyright" style="text-align: center;">
 			<?php _e("© All rights reserved | LLC «TriInkom»", 'wordpress_erip_expresspay'); ?> 2013-<?php echo date("Y"); ?><br />
@@ -283,7 +279,7 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 
 		return array(
 			'result' => 'success',
-			'redirect'	=> add_query_arg('order-pay', $order->get_order_number( ), add_query_arg('key', $order->get_order_key(), get_permalink(wc_get_page_id('pay'))))
+			'redirect'	=> add_query_arg('order-pay', $order->get_id(), add_query_arg('key', $order->get_order_key(), get_permalink(wc_get_page_id('pay'))))
 		);
 
 	}
@@ -479,8 +475,6 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . wc_get_checkout_url() . '">' . __('Try again', 'wordpress_erip_expresspay') . '</a></p>';
 
 		$this->log_info('fail', 'End render fail page; ORDER ID - ' . $order->get_order_number());
-
-		die();
 	}
 
 	function check_ipn_response()

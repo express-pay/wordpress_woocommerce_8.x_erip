@@ -320,7 +320,7 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 			"ReturnType" => "json",
 			"ReturnUrl" => get_site_url(),
 			"FailUrl" => get_site_url(),
-			"ReturnInvoiceUrl" => 0
+			"ReturnInvoiceUrl" => 1
 		);
 
 		$request_params['Signature'] = $this->compute_signature($request_params, $this->secret_word, 'add_invoice');
@@ -347,7 +347,10 @@ class WC_Gateway_ExpressPay_Erip extends WC_Payment_Gateway {
 			$this->fail($order_id, $e);
 		}
 
-		if (isset($response->ExpressPayInvoiceNo))
+		if (isset($response->InvoiceUrl)){
+			wp_redirect($response->InvoiceUrl);
+			exit;
+		} elseif (isset($response->ExpressPayInvoiceNo))
 			$this->success($order_id, $response->ExpressPayInvoiceNo);
 		else
 			$this->fail($order_id, $response->Errors);

@@ -4,7 +4,7 @@ use Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodTyp
 /**
  * Expresspay Erip Payments Blocks integration
  *
- * @since 1.1.3
+ * @since 1.1.4
  */
 final class WC_Gateway_ExpressPay_Erip_Blocks_Support extends AbstractPaymentMethodType {
 
@@ -52,7 +52,7 @@ final class WC_Gateway_ExpressPay_Erip_Blocks_Support extends AbstractPaymentMet
 			? require( $script_asset_path )
 			: array(
 				'dependencies' => array(),
-				'version'      => '1.1.3'
+				'version'      => '1.1.4'
 			);
 		$script_url        = WC_ExpressPay_Erip_Payments::plugin_url() . $script_path;
 

@@ -3,7 +3,7 @@
   Plugin Name: Express Payments: ERIP
   Plugin URI: https://express-pay.by/cms-extensions/wordpress
   Description: Express Payments: ERIP - is a plugin for integration with the «Express Payments» (express-pay.by) via API. The plugin allows you to issue an invoice in the ERIP system, receive and process a payment notification in the ERIP system, issue invoices for payment by bank cards, receive and process notifications of payment by a bank card. The plugin description is available at: <a target="blank" href="https://express-pay.by/cms-extensions/wordpress">https://express-pay.by/cms-extensions/wordpress</a>
-  Version: 1.1.3
+  Version: 1.1.4
   Author: LLC "TriInkom"
   Author URI: https://express-pay.by/
   License: GPLv2 or later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define("EXPRESSPAY_ERIP_VERSION", "1.1.3");
+define("EXPRESSPAY_ERIP_VERSION", "1.1.4");
 
 /**
  * WC ExpressPay_Erip Payment gateway plugin class.

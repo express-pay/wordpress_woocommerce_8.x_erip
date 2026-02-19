@@ -1,0 +1,9 @@
+.git
+.github
+.gitignore
+node_modules
+resources
+bin
+package.json
+webpack.config.js
+README.md
